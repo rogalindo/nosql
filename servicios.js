@@ -2,25 +2,26 @@
 const express = require('express')
 const http = require('http')
 const bodyParser=require('body-parser')
+//definimos las variables que son instaladas mediante "NPM" (express,body-parser,firebase)
 var firebase= require('firebase')
 let items=[]
 let contador=0
 //comentario1
  
  
-var miRuta = {
+var fireBaseRute = {
   apiKey: "AIzaSyBguUXipVx6q3_N8H61AA_-2cCAUPrcwpk",
   authDomain: "crud-6f747.firebaseapp.com",
   databaseURL: "https://crud-6f747.firebaseio.com/cliente",
   storageBucket: "crud-6f747.appspot.com",
 };
-//firebase.initializeApp(miRuta);
+//firebase.initializeApp(fireBaseRute);
 let router=express.Router()
 router.use(bodyParser())
 router.route('/')
 .get(function(request,response){
     items=[]
-    miRuta.once("value",function(snap){
+    fireBaseRute.once("value",function(snap){
         let nuevoCliente=snap.val()
         items.push(nuevoCliente)
         console.log(contador++)
@@ -33,16 +34,16 @@ router.route('/')
  
 })
 .post(function(req,res,next){
-    miRuta.child(req.body.cedula).set(req.body)
+    fireBaseRute.child(req.body.cedula).set(req.body)
     res.status(200).send('post version 1')
 })
 .put(function(req,res,next){
  
-    miRuta.child(req.body.cedula).set(req.body)
+    fireBaseRute.child(req.body.cedula).set(req.body)
      res.status(200).send(req.body.codigo)
 })
 .delete(function(req,res,next){
-    miRuta.child(req.body.cedula).remove(function(error){
+    fireBaseRute.child(req.body.cedula).remove(function(error){
         if (error)
          {
              return res.status(404).send('error de todas')
