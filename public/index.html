@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>NoSQL CRUD</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" type="text/javascript">
@@ -21,8 +21,8 @@
                    for (var dato in msg[0])
                    {
                        htmlpuro+='<tr>'
-                           htmlpuro+='<td>'+  msg[0][dato].direccion+'</td>'
-                           htmlpuro+='<td>'+ msg[0][dato].nombre+'</td>'
+                           htmlpuro+='<td>'+  msg[0][dato].dir+'</td>'
+                           htmlpuro+='<td>'+ msg[0][dato].nom+'</td>'
                         htmlpuro+='</tr>'
 
                    }
@@ -37,10 +37,10 @@
             $("#btninsertar").click(function(){
                 
                 var varcedula =$("#txtcedula").val();
-                var varnombre=$("#txtnombre").val();
-                var vardireccion=$("#txtdireccion").val();
+                var varnom=$("#txtnom").val();
+                var vardir=$("#txtdir").val();
                 
-                datos={"cedula":varcedula,"nombre":varnombre,"direccion":vardireccion};
+                datos={"cedula":varcedula,"nom":varnom,"dir":vardir};
                 //datos={"razonsocial":"xxx","correo":"correo","token":"token"};
                $.ajax({
                    type:"POST",
@@ -58,10 +58,10 @@
             $("#btnmodificar").click(function(){
                 
                 var varcedula=$("#txtcedula").val();
-                var varnombre=$("#txtnombre").val();
-                var vardireccion=$("#txtdireccion").val();
+                var varnom=$("#txtnom").val();
+                var vardir=$("#txtdir").val();
                 
-                datos={"cedula":varcedula,"nombre":varnombre,"direccion":vardireccion};
+                datos={"cedula":varcedula,"nom":varnom,"dir":vardir};
                 
                $.ajax({
                    type:"PUT",
@@ -77,9 +77,9 @@
             
             $("#btneliminar").click(function(){
                 var varcedula=$("#txtcedula").val();
-                var varnombre=$("#txtnombre").val();
-                var vardireccion=$("#txtdireccion").val();
-                datos={"cedula":varcedula,"nombre":varnombre,"direccion":vardireccion};
+                var varnom=$("#txtnom").val();
+                var vardir=$("#txtdir").val();
+                datos={"cedula":varcedula,"nom":varnom,"dir":vardir};
 
                $.ajax({
                    type:"DELETE",
@@ -109,10 +109,10 @@
         <form>
             <label>Documento</label>
             <input type="text" id="txtcedula"/>
-            <label>Nombre</label>
-            <input type="text" id="txtnombre"/>
+            <label>nom</label>
+            <input type="text" id="txtnom"/>
             <label>Dirección</label>
-            <input type="text" id="txtdireccion"/>
+            <input type="text" id="txtdir"/>
             
             <input type="button" id="btnconsultar" value="Consultar"/>
             <input type="button" id="btninsertar" value="Insertar"/>
