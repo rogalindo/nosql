@@ -5,6 +5,7 @@ const bodyParser=require('body-parser')
 var firebase= require('firebase')
 let items=[]
 let contador=0
+//comentaerio
  
  
 var miRuta = {
@@ -54,3 +55,6 @@ let app= express()
 .use('/todo',router)
 .use(express.static(__dirname+'/public'))
 .listen(3000)
+
+
+//escribes tu codigo :v
